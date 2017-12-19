@@ -34,13 +34,14 @@ steps = 1  # Stepping onto the diagram
 while True:
     for dx, dy in directions(maze, x, y, dx, dy):
         c = maze[y + dy][x + dx]
-        if c in ascii_uppercase:
+        if not c:
+            continue
+        elif c in ascii_uppercase:
             seen.append(c)
-        elif c:
-            x += dx
-            y += dy
-            steps += 1
-            break
+        x += dx
+        y += dy
+        steps += 1
+        break
     else:
         break
 
